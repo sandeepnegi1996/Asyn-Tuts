@@ -6,7 +6,7 @@ let posts = [
 ];
 
 function getPosts() {
-  setInterval(function testingset() {
+  setInterval(() => {
     console.log("testing setInterval");
   }, 3000);
 }
