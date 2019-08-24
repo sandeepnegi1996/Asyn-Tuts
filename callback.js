@@ -6,9 +6,21 @@ let posts = [
 ];
 
 function getPosts() {
-  setInterval(() => {
-    console.log("testing setInterval");
+  setTimeout(() => {
+    let output = "";
+    posts.forEach((post, index) => {
+      //   output = output + post.title + " ";
+      output += `<li>${post.title}</li>`;
+    });
+    document.body.innerHTML = output;
+  }, 1000);
+}
+
+function createPost(post, callback) {
+  setTimeout(() => {
+    posts.push(post);
+    callback();
   }, 3000);
 }
 
-getPosts();
+createPost({ title: "third", body: "this is third post" }, getPosts);

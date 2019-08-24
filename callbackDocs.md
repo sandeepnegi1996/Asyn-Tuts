@@ -15,8 +15,8 @@ passed inside the function it will be automatically called
 
 ```javascript
 function getPosts() {
-  setInterval(function testingset() {
-    console.log("testing setInterval");
+  setTimeout(function testingset() {
+    console.log("testing setTimeout");
   }, 3000);
 }
 ```
@@ -27,8 +27,45 @@ function getPosts() {
 
 ```javascript
 function getPosts() {
-  setInterval(() => {
-    console.log("testing setInterval");
+  setTimeout(() => {
+    console.log("testing setTimeout");
   }, 3000);
 }
+```
+
+## some code
+
+```javascript
+console.log("testing callback js");
+
+let posts = [
+  { title: "one", body: "this is post one" },
+  { title: "two", body: "this is post two" }
+];
+
+function getPosts() {
+  setTimeout(() => {
+    let output = "";
+    posts.forEach((post, index) => {
+      //   output = output + post.title + " ";
+      output += `<li>${post.title}</li>`;
+    });
+    document.body.innerHTML = output;
+  }, 2000);
+}
+
+getPosts();
+```
+
+### This callback function will be called after the completion of that function
+
+```javascript
+function createPost(post, callback) {
+  setTimeout(() => {
+    posts.push(post);
+    callback();
+  }, 3000);
+}
+
+createPost({ title: "third", body: "this is third post" }, getPosts);
 ```
